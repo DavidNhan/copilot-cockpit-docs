@@ -1,127 +1,75 @@
-# Teststrategie und Testabdeckung
+# Testing und Verifikation
 
-Das Quell-Repo nutzt Playwright als einzigen automatisierten Teststack. Die Tests pruefen sowohl Browserverhalten als auch Datenintegritaet der JSON-Kataloge.
+## Zweck
 
-## 1. Technische Basis
+Dieses Dokument beschreibt die Qualitaetssicherungsstrategie fuer Copilot Cockpit mit Fokus auf Regression, Datenintegritaet und fachliche Navigationsketten.
 
-Relevante Dateien:
+## 1. Testpyramide fuer dieses Produkt
 
-- `package.json` - Script `npm test`
-- `playwright.config.js` - Testkonfiguration
-- `tests\*.spec.js` - 11 Spec-Dateien
+Copilot Cockpit ist datengetrieben und statisch ausgeliefert. Daher ist die praktische Prioritaet:
 
-Die Konfiguration in `playwright.config.js` setzt:
+1. E2E-Verhalten im Browser
+2. Datenvertrags- und Integritaetspruefungen
+3. Gezielt manuelle visuelle Checks bei Layout-/Diagrammrisiken
 
-| Einstellung | Wert |
+## 2. Automatisierter Teststack
+
+- Framework: Playwright
+- Browser: Chromium
+- Scope: Perspektivenseiten + Integritaetspruefungen
+- Umfang laut Projektbeschreibung: 222 Tests in 11 Spec-Dateien
+
+## 3. Testdomaenen
+
+| Domaene | Fokus |
 | --- | --- |
-| `testDir` | `./tests` |
-| `reporter` | `list` |
-| Browser | Chromium |
-| `baseURL` | `http://localhost:3000` |
-| lokaler Webserver | `python3 -m http.server 3000 --bind 127.0.0.1` |
-| CI-Verhalten | `retries: 2`, `workers: 1` |
+| Seiten-Boot | Start ohne Laufzeitfehler |
+| Rendering | Sichtbare und korrekte Kernobjekte |
+| Interaktion | Filter, Details, Tabs, Suchfluesse |
+| Navigation | Deep-Links und Perspektivenuebergaenge |
+| Persistenz | Browserstate wie Theme/Checklist |
+| Datenintegritaet | IDs, Referenzen, Pflichtfelder, Typen |
 
-## 2. Start der Tests
+## 4. Release-Gates (empfohlen)
 
-```bash
-cd C:\Users\danh\copilot-cockpit
-npm test
-```
+Ein Release sollte nur passieren, wenn:
 
-Optional kann eine einzelne Suite gezielt gestartet werden:
+1. Alle relevanten automatisierten Suites gruen sind
+2. Betroffene Cross-Perspective-Pfade erfolgreich getestet sind
+3. Integritaetstests fuer geaenderte Kataloge ohne Fehler durchlaufen
+4. Keine offenen Major-Defects in Security/Governance/Navigation bestehen
 
-```bash
-npx playwright test tests\tower.spec.js
-```
+## 5. Risikoorientierte Testauswahl
 
-## 3. Umfang
-
-Die Testbasis umfasst **222 Tests** in **11 Spec-Dateien**.
-
-| Spec-Datei | Anzahl Tests | Schwerpunkt |
-| --- | ---: | --- |
-| `tests\cockpit.spec.js` | 29 | Haupt-Cockpit, Blade, Tabs, Filter, Suche, Themes, Deep Links |
-| `tests\security.spec.js` | 37 | X-Ray Scanner, Posture Score, Deep Links, Theme, Cockpit-Bruecke |
-| `tests\runway.spec.js` | 31 | Modellkatalog, Filter, Blade, Topologie, Engine, Runway-Bruecke |
-| `tests\tower.spec.js` | 25 | Governance-Controls, Souveraenitaet, Flight Plans, Print, Deep Links |
-| `tests\terminal.spec.js` | 17 | Plan-Auswahl, IDE-Setup, Uebungen, Perspektivnavigation |
-| `tests\jet-bridge.spec.js` | 17 | Prompt Craft, Kontext, Edit Mode, Agent Patterns |
-| `tests\flight-log.spec.js` | 15 | Timeline, Filter, Instrument-Links, Theme, Navigation |
-| `tests\ramp.spec.js` | 15 | Ramp-Karten, Detail-Blade, Deep Links, Metaphernschluessel |
-| `tests\wiring.spec.js` | 14 | Mermaid-Graph, Filter, Legende, Zonen, Statistiken |
-| `tests\preflight.spec.js` | 13 | Checkliste, Fortschritt, `localStorage`, Reset |
-| `tests\integrity.spec.js` | 9 | Katalog- und Querverweis-Integritaet |
-
-## 4. Was wird konkret getestet?
-
-### 4.1 Oberflaechen- und Seitentests
-
-Fast jede Perspektivenseite hat eine eigene Suite fuer:
-
-- fehlerfreies Booten ohne JS-Fehler
-- sichtbare Haupt-Landmarks
-- aktive Navigationsmarkierung
-- korrekte Anzahl und Struktur der gerenderten Karten, Reihen oder Controls
-
-### 4.2 Interaktionstests
-
-Die interaktiven Kernmuster werden direkt auf UI-Ebene abgesichert:
-
-- Cockpit-Detail-Blade, Tabs und Suchfilter
-- Runway-Model-Blade und Filterchips
-- Ramp-Detail-Blade inkl. Hash-Deep-Link
-- Security-Scanner und Posture-Checkboxen
-- Pre-Flight-Fortschritt und Reset
-- Theme-Persistenz ueber `localStorage`
-
-### 4.3 Cross-Page-Bruecken
-
-Ein wichtiges Architekturmerkmal des Projekts sind Tests fuer Querverbindungen:
-
-- Cockpit -> Security
-- Cockpit -> Tower
-- Cockpit -> Runway
-- Flight Log -> Cockpit
-- Wiring -> Cockpit
-
-Damit wird nicht nur isolierte Seitendarstellung, sondern auch die Verdrahtung des Gesamtsystems regressionssicher gemacht.
-
-### 4.4 Integritaet der Datenkataloge
-
-`tests\integrity.spec.js` ist die wichtigste nicht-visuelle Suite. Sie prueft unter anderem:
-
-- Instrument-Referenzen in Changelog-Eintraegen
-- Endpunkte in `wiring-diagram.json`
-- `relatedInstruments`-Referenzen
-- doppelte Instrument- und Modell-IDs
-- Pflichtfelder in Instrumenten
-- gueltige Zonen
-- definierte Changelog- und Connection-Typen
-
-Diese Suite ist fuer dieses Repo besonders wichtig, weil die Anwendung stark datengetrieben ist.
-
-## 5. Testcharakter des Projekts
-
-Die Tests sind keine Unit-Tests fuer lose Funktionen, sondern vor allem:
-
-1. **Smoke Tests** fuer das Booten der Seiten
-2. **Akzeptanztests** fuer Interaktionen und Seitensemantik
-3. **Datenvertragstests** fuer JSON-Kataloge und ihre Querverweise
-
-Fuer ein statisches, kataloggetriebenes Projekt ist das passend: Die groessten Risiken liegen hier in kaputten Links, ungueltigen IDs, unvollstaendigen Datenobjekten und ausfallenden Seitenskripten.
-
-## 6. Was bei Aenderungen mitgetestet werden sollte
-
-| Aenderung | Relevante Tests |
+| Aenderungstyp | Mindesttestumfang |
 | --- | --- |
-| Cockpit-Instrumente oder Detail-Blade | `cockpit.spec.js`, oft auch `security.spec.js`, `tower.spec.js`, `runway.spec.js`, `integrity.spec.js` |
-| Sicherheitsdaten | `security.spec.js`, `integrity.spec.js` |
-| Governance- oder Souveraenitaetsdaten | `tower.spec.js`, `integrity.spec.js` |
-| Modellkatalog | `runway.spec.js`, `tower.spec.js`, `integrity.spec.js` |
-| Wiring-Graph | `wiring.spec.js`, `integrity.spec.js` |
-| Changelog-Eintraege | `flight-log.spec.js`, `integrity.spec.js`, indirekt `search.js` |
-| Onboarding-/Tutorial-Daten | `terminal.spec.js`, `jet-bridge.spec.js`, `preflight.spec.js` |
+| Neue Instrumente/Modelle | Cockpit/Runway/Tower plus Integritaet |
+| Security-Kataloge | Security plus Integritaet |
+| Governance/Residency | Tower plus Integritaet |
+| Wiring/Graph-Logik | Wiring plus Integritaet |
+| Navigation/Suche | Cockpit, Flight Log, Cross-Link-Stichprobe |
 
-## 7. Bewertung
+## 6. Manuelle Verifikation (ergaenzend)
 
-Fuer eine statische Referenzsite ist die Testabdeckung auffallend systematisch. Das Repo testet nicht nur Rendering, sondern auch Datenvertraege, Deep Links, lokale Persistenz und fachliche Bruecken zwischen den Perspektiven. Genau diese Kombination schuetzt das Projekt vor den wahrscheinlichsten Fehlern.
+Automatisierte Tests sind notwendig, aber nicht hinreichend. Ergaenzende Checks:
+
+1. Mermaid-Diagramme korrekt gerendert
+2. Kritische Seiten in mindestens zwei typischen Viewport-Groessen geprueft
+3. Fachliche Terminologie ueber Perspektiven konsistent
+4. Changelog-Links verweisen auf erwartbare Ziele
+
+## 7. Qualitaetsmetriken fuer Testgesundheit
+
+- Pass-Rate je Pipeline-Lauf
+- Anzahl regressiver Defects pro Release
+- Mean time to fix fuer kritische Defects
+- Anteil geaenderter Kataloge mit Integritaetspruefung
+
+## 8. Testluecken aktiv schliessen
+
+Wenn Fehler ausserhalb bestehender Tests auftreten, sollte unmittelbar folgen:
+
+1. Reproduktion dokumentieren
+2. Fehlenden Test ergaenzen
+3. Fix implementieren
+4. Regression bestaetigen

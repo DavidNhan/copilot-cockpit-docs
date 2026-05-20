@@ -1,93 +1,79 @@
-# Setup und Betrieb
+# Setup, Betrieb und Release
 
-Diese Anleitung beschreibt das Quell-Repo `C:\Users\danh\copilot-cockpit`.
+## Zweck
+
+Dieses Dokument beschreibt den Betriebsweg fuer Copilot Cockpit: lokale Ausfuehrung, Testausfuehrung, Deployment und sichere Aenderungsdurchfuehrung.
 
 ## 1. Voraussetzungen
 
-Da die Website statisch ist, sind die Voraussetzungen ueberschaubar:
+- Node.js + npm fuer Test- und Tooling-Befehle
+- Python 3 fuer den lokalen statischen Server im Testpfad
+- Chromium (Playwright Browser) fuer E2E-Verifikation
 
-- Node.js und npm fuer Abhaengigkeiten und Playwright
-- Python 3 fuer den in `playwright.config.js` definierten lokalen Webserver
-- Ein statischer HTTP-Server, falls die Seiten ohne Playwright lokal angesehen werden sollen
+Hinweis:
 
-Wichtig: Die HTML-Seiten koennen nicht sinnvoll per `file://` geoeffnet werden, weil sie JSON-Dateien per `fetch('data/...')` laden.
+- Direkter Aufruf per file:// ist ungeeignet, da Inhalte per fetch geladen werden.
 
-## 2. Installation
+## 2. Lokaler Schnellstart
 
 ```bash
-cd C:\Users\danh\copilot-cockpit
 npm install
 npx playwright install chromium
 ```
 
-`package.json` definiert bewusst nur eine minimale Node-Seite: Die einzige Dev-Dependency ist `@playwright/test`.
+Laufoptionen:
 
-## 3. Lokales Starten
-
-### Option A: Beliebiger statischer Server
-
-Das README des Quell-Repos nennt diesen einfachen Weg:
+1. Statischer Schnelllauf
 
 ```bash
 npx serve .
 ```
 
-Danach kann die Site lokal ueber den ausgegebenen Port geoeffnet werden.
-
-### Option B: Start ueber den Testpfad
-
-`playwright.config.js` startet fuer Tests automatisch einen Webserver:
+2. Testgetriebener Lauf (inkl. lokalem Webserver)
 
 ```bash
 npm test
 ```
 
-Intern nutzt die Konfiguration:
+## 3. Betriebsmodell
 
-- `baseURL: http://localhost:3000`
-- `webServer.command: python3 -m http.server 3000 --bind 127.0.0.1`
+Copilot Cockpit wird als statische Site betrieben.
 
-Damit ist Python 3 eine praktische Laufzeitvoraussetzung fuer den Testbetrieb.
+Wichtige Eigenschaften:
 
-## 4. Seitenstruktur im Betrieb
+- Kein klassischer Build-Step erforderlich
+- HTML/CSS/JS/JSON werden direkt ausgeliefert
+- Caching wird ueber Hosting-Konfiguration gesteuert
 
-Die Anwendung besteht aus direkt auslieferbaren Root-Dateien:
+## 4. Deployment-Grundsaetze
 
-- `index.html` fuer das Haupt-Cockpit
-- weitere HTML-Dateien fuer jede Perspektive und Utility-Seite
-- `styles.css` als gemeinsames Stylesheet
-- `app.js` und `search.js` als gemeinsame JavaScript-Dateien
-- `data\*.json` als Inhaltskataloge
+1. Vor Deployment immer Tests ausfuehren
+2. Datenaenderungen als risikoreich behandeln (Integritaet + Perspektiven pruefen)
+3. Rollout erst nach dokumentierter Review-Freigabe
+4. Bei kritischen Inhalten Quelle und Verifikationsstatus mitliefern
 
-Es gibt keinen Build-Output, kein `dist\` und keinen Bundler.
+## 5. Change-Workflow (Best Practice)
 
-## 5. Deployment
+1. Issue oder Change Request definieren
+2. Betroffene Perspektiven und Datenkataloge bestimmen
+3. Implementierung in kleinen, nachvollziehbaren Schritten
+4. Lokale Testausfuehrung inkl. Integritaetschecks
+5. Reviewer-Check auf fachliche Korrektheit und Cross-Linking
+6. Merge und Release
 
-`vercel.json` zeigt, dass das Repo als reine statische Site deployt wird:
+## 6. Betriebskritische Checks vor Merge
 
-- `buildCommand` ist leer
-- `outputDirectory` ist `.` (Repo-Wurzel)
-- Cache-Header sind separat fuer `media`, `.css`, `.js` und `data` gesetzt
+- Seite bootet ohne Scriptfehler
+- Navigation zwischen Perspektiven funktioniert
+- Deep-Links oeffnen korrekte Details
+- Suchpalette liefert erwartete Treffer
+- Theme/UIs in zentralen Seiten stabil
 
-Praktisch bedeutet das:
+## 7. Notfall- und Rueckfallstrategie
 
-1. HTML-Dateien werden direkt aus dem Repo ausgerollt.
-2. JavaScript und JSON erhalten kurze Revalidierungsfenster.
-3. Medien unter `media\` werden langfristig gecacht.
+Empfehlungen:
 
-## 6. Typische Aenderungspfade
-
-| Aenderungsart | Relevante Dateien |
-| --- | --- |
-| Neue Perspektivenseite | neue `*.html`, ggf. neue JSON-Datei unter `data\`, passende Spec-Datei unter `tests\` |
-| Neue oder geaenderte Instrumente | `data\copilot-instruments.json`, evtl. `app.js`, `wiring-diagram.json`, `known-changelog-entries.json`, Tests |
-| Modellkatalog aktualisieren | `data\copilot-models.json`, optional `tools\enrich\` |
-| Governance-Inhalte | `data\governance-controls.json`, `data\sovereign-cloud.json`, `tower.html`, Tests |
-| Sicherheitsinhalte | `data\security-threats.json`, `data\security-frameworks.json`, `security.html`, Tests |
-
-## 7. Hinweise fuer lokale Entwicklung
-
-- Theme-Zustand wird per `localStorage` gespeichert und ueber Seiten hinweg wiederverwendet.
-- Mehrere Seiten nutzen Mermaid; Probleme zeigen sich oft erst im Browser und sollten per Playwright mitgetestet werden.
-- Das Repo hat eigene Medienaufnahmen fuer Instrumente. Wenn sich Media-Tabs oder Pfade aendern, muessen `media\recordings` und der Demo-Workflow mitgedacht werden.
-- `tools\enrich\` ist ein separater Python-Pfad und nicht noetig, um die Website lokal zu starten.
+1. Letzten stabilen Release-Stand markieren
+2. Datenhotfixes getrennt von grossen UI-Refactorings halten
+3. Bei regressiven Navigationseffekten sofort Rollback ermoeglichen
+4. Incident kurz dokumentieren und Testluecke nachziehen

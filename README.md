@@ -1,43 +1,71 @@
-# Projektdokumentation zu Copilot Cockpit
+# Copilot Cockpit - Technische Dokumentation
 
-Diese Dokumentation beschreibt das Quell-Repo `C:\Users\danh\copilot-cockpit` auf Basis der tatsaechlichen Dateien, Seiten, Datenkataloge und Tests. Das Projekt selbst ist eine statische, datengetriebene Referenzsite zu GitHub Copilot mit durchgaengiger Luftfahrt-Metapher.
+Diese Doku beschreibt die Plattform Copilot Cockpit (https://copilot-cockpit.com/) und das oeffentliche Referenz-Repository (https://github.com/TheTrustedAdvisor/copilot-cockpit) nach Best Practices.
 
-Alle Pfade in dieser Doku beziehen sich auf die Wurzel des Quell-Repos.
+Ziel ist eine produkt- und architekturzentrierte Dokumentation mit klarer Nachvollziehbarkeit, statt einer lokalpfad-gebundenen Dateibeschreibung.
 
-## Kurzprofil
+## Zielbild
 
-| Bereich | Stand |
-| --- | --- |
-| Anwendungstyp | Statische Multi-Page-Webseite ohne Build-Step |
-| Zentrale Einstiegspunkte | `index.html`, `terminal.html`, `security.html`, `jet-bridge.html`, `ramp.html`, `runway.html`, `tower.html`, `flight-log.html`, `preflight.html`, `wiring.html` |
-| Gemeinsame Laufzeitdateien | `app.js`, `search.js`, `styles.css` |
-| Inhaltliche Datenbasis | JSON-Dateien unter `data\` |
-| Deployment | Vercel Static Hosting ueber `vercel.json` |
-| Test-Setup | Playwright, 11 Spec-Dateien, 222 Tests |
-| Zusatz-Tooling | `tools\enrich\` fuer Modellkatalog-Anreicherung, GitHub Action fuer Demo-Aufnahmen |
+Copilot Cockpit ist eine interaktive Referenz fuer GitHub Copilot, die Features in einer Luftfahrt-Cockpit-Metapher organisiert.
 
-## Dokumentationssatz
+Wesentliche Eigenschaften:
 
-- `docs/architecture.md` - Systembild, Laufzeitarchitektur, Querverbindungen
-- `docs/setup.md` - Lokales Starten, Voraussetzungen, Deployment-Hinweise
-- `docs/data-sources.md` - JSON-Kataloge, Verbraucher und Pflegepfade
-- `docs/testing.md` - Testaufbau, Spec-Dateien und Testfokus
-- `docs/site-map.md` - Zweck jeder HTML-Seite inklusive Daten- und Testbezug
+- Statische Multi-Page-Webanwendung ohne klassischen Build-Step
+- Datengetriebenes Rendering aus JSON-Katalogen
+- Perspektivenmodell von Onboarding bis Governance und Security
+- Browserbasierte End-to-End-Qualitaetssicherung mit Playwright
 
-## Relevante Quellstrukturen
+## Dokumentationsstruktur
 
-| Pfad | Zweck |
-| --- | --- |
-| `*.html` im Repo-Root | Jede Seite ist ein eigener statischer Einstiegspunkt |
-| `app.js` | Render-Engine fuer das Cockpit auf `index.html` |
-| `search.js` | Globale Suchpalette fuer Instrumente, Controls, Modelle und Changelog |
-| `styles.css` | Gemeinsames HUD-Design, Dark/Light Theme, Komponentenstile |
-| `data\*.json` | Inhaltlicher Katalog fuer Seiten und Querverweise |
-| `tests\*.spec.js` | End-to-End- und Integritaetstests mit Playwright |
-| `media\recordings` | GIF-Demos fuer Media-Tabs im Cockpit |
-| `tools\enrich\` | Separater Python-Pfad zur Pflege von `data\copilot-models.json` |
-| `.github\workflows\record-demos.yml` | Automatisierte Aktualisierung der Demo-Aufnahmen |
+- `docs/index.md`: Einstieg und Lesereihenfolge
+- `docs/01-product-overview.md`: Produktzweck, Scope, Zielgruppen, Perspektiven
+- `docs/02-architecture-context.md`: Systemkontext und Betriebsgrenzen
+- `docs/03-component-architecture.md`: Komponenten, Verantwortung, Abhaengigkeiten
+- `docs/04-data-flows.md`: Datenfluesse, Zustandsmodell, Integritaetsanforderungen
+- `docs/05-integrations-and-apis.md`: Integrationen, externe Bibliotheken, Schnittstellen
+- `docs/06-security-and-compliance.md`: Security-Modell und Governance-Aspekte
+- `docs/07-deployment-and-operations.md`: Deployment-, Change- und Betriebsprozess
+- `docs/08-observability-and-sre.md`: Monitoring, SLO/SLI, Incident-Muster
+- `docs/09-testing-and-quality.md`: Teststrategie und Quality Gates
+- `docs/10-risk-assumptions-and-decisions.md`: Risiken, Annahmen, ADR-Index
+- `docs/11-runbooks-and-troubleshooting.md`: Runbooks fuer Stoerungen und Recovery
+- `docs/12-glossary.md`: Einheitliche Begriffe und Abkuerzungen
+- `docs/ultraplan.md`: Umsetzungs- und Qualitaetsplan (ralph-Zyklen, Exit-Kriterien)
+- `docs/changelog.md`: Doku-Aenderungsprotokoll
+- `docs/quality/*`: Rubrik, Scorecard, Iterationslog, Traceability
+- `docs/adr/*`: Architecture Decision Records
+- `docs/templates/*`: Vorlagen fuer Kapitel, Reviews, Verifikation
 
-## Einordnung
+## Scope und Nicht-Scope
 
-Das Repo ist kein Framework-Projekt und kein API-Backend. Es ist eine rein clientseitige Dokumentations- und Referenzanwendung: HTML + CSS + Vanilla JavaScript laden JSON-Dateien per `fetch()`, rendern daraus Oberflaechen und verbinden die Perspektiven ueber Hash-Deep-Links, lokale Browserzustandsdaten und gemeinsame Navigationsmuster.
+In Scope:
+
+- Produktarchitektur und Seitenmodell
+- Datenquellen und Verifikationsstatus
+- Test- und Betriebskonzepte
+- Nachvollziehbare Wartungs- und Review-Regeln
+
+Nicht in Scope:
+
+- Interne, nicht oeffentliche Roadmap
+- Proprietaere Betriebskennzahlen ohne oeffentliche Quelle
+
+## Quellenbasis
+
+- Produktseite: https://copilot-cockpit.com/
+- Repository und README: https://github.com/TheTrustedAdvisor/copilot-cockpit
+
+## Qualitaetsanspruch
+
+Die Doku wird nach einer gewichteten Rubrik bewertet (Vollstaendigkeit, Korrektheit, Nachvollziehbarkeit, Wartbarkeit, Testbarkeit) und iterativ verbessert, bis >=90% Gesamtqualitaet erreicht sind.
+
+## Empfohlene Lesereihenfolge
+
+1. `docs/index.md`
+2. `docs/01-product-overview.md`
+3. `docs/02-architecture-context.md`
+4. `docs/03-component-architecture.md`
+5. `docs/04-data-flows.md`
+6. `docs/06-security-and-compliance.md`
+7. `docs/07-deployment-and-operations.md`
+8. `docs/09-testing-and-quality.md`
