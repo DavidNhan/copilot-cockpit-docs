@@ -2,29 +2,38 @@
 
 ## Purpose
 
-This index provides orientation through the full technical documentation for Copilot Cockpit.
+This index separates documentation into user-oriented and technical tracks.
 
-## Recommended Reading Path
+## User Docs
 
-1. 01 Product Overview
-2. 02 Architecture Context
-3. 03 Component Architecture
-4. 04 Data Flows
-5. 05 Integrations and APIs
-6. 06 Security and Compliance
-7. 07 Deployment and Operations
-8. 08 Observability and SRE
-9. 09 Testing and Quality
-10. 10 Risk, Assumptions, and Decisions
-11. 11 Runbooks and Troubleshooting
-12. 12 Glossary
+- user-docs/index.md
+- user-docs/getting-started.md
+- user-docs/navigation-and-workflows.md
+- user-docs/faq.md
 
-## Core Governance Files
+## Technical Docs
 
-- `ultraplan.md`
-- `quality/rubric.md`
-- `quality/scorecard.md`
-- `quality/iteration-log.md`
-- `quality/traceability-matrix.md`
-- `adr/README.md`
-- `changelog.md`
+- technical-docs/index.md
+- technical-docs/architecture-at-a-glance.md
+- 01-product-overview.md
+- 02-architecture-context.md
+- 03-component-architecture.md
+- 04-data-flows.md
+- 05-integrations-and-apis.md
+- 06-security-and-compliance.md
+- 07-deployment-and-operations.md
+- 08-observability-and-sre.md
+- 09-testing-and-quality.md
+- 10-risk-assumptions-and-decisions.md
+- 11-runbooks-and-troubleshooting.md
+- 12-glossary.md
+
+## Governance and Quality Files
+
+- ultraplan.md
+- quality/rubric.md
+- quality/scorecard.md
+- quality/iteration-log.md
+- quality/traceability-matrix.md
+- adr/README.md
+- changelog.md

@@ -17,24 +17,39 @@ Wesentliche Eigenschaften:
 
 ## Dokumentationsstruktur
 
-- `docs/index.md`: Einstieg und Lesereihenfolge
-- `docs/01-product-overview.md`: Produktzweck, Scope, Zielgruppen, Perspektiven
-- `docs/02-architecture-context.md`: Systemkontext und Betriebsgrenzen
-- `docs/03-component-architecture.md`: Komponenten, Verantwortung, Abhaengigkeiten
-- `docs/04-data-flows.md`: Datenfluesse, Zustandsmodell, Integritaetsanforderungen
-- `docs/05-integrations-and-apis.md`: Integrationen, externe Bibliotheken, Schnittstellen
-- `docs/06-security-and-compliance.md`: Security-Modell und Governance-Aspekte
-- `docs/07-deployment-and-operations.md`: Deployment-, Change- und Betriebsprozess
-- `docs/08-observability-and-sre.md`: Monitoring, SLO/SLI, Incident-Muster
-- `docs/09-testing-and-quality.md`: Teststrategie und Quality Gates
-- `docs/10-risk-assumptions-and-decisions.md`: Risiken, Annahmen, ADR-Index
-- `docs/11-runbooks-and-troubleshooting.md`: Runbooks fuer Stoerungen und Recovery
-- `docs/12-glossary.md`: Einheitliche Begriffe und Abkuerzungen
-- `docs/ultraplan.md`: Umsetzungs- und Qualitaetsplan (ralph-Zyklen, Exit-Kriterien)
-- `docs/changelog.md`: Doku-Aenderungsprotokoll
-- `docs/quality/*`: Rubrik, Scorecard, Iterationslog, Traceability
-- `docs/adr/*`: Architecture Decision Records
-- `docs/templates/*`: Vorlagen fuer Kapitel, Reviews, Verifikation
+- `docs/index.md`: Einstieg mit Aufteilung in User Docs und Technical Docs
+
+User Docs:
+
+- `docs/user-docs/index.md`
+- `docs/user-docs/getting-started.md`
+- `docs/user-docs/navigation-and-workflows.md`
+- `docs/user-docs/faq.md`
+
+Technical Docs:
+
+- `docs/technical-docs/index.md`
+- `docs/technical-docs/architecture-at-a-glance.md`
+- `docs/01-product-overview.md`
+- `docs/02-architecture-context.md`
+- `docs/03-component-architecture.md`
+- `docs/04-data-flows.md`
+- `docs/05-integrations-and-apis.md`
+- `docs/06-security-and-compliance.md`
+- `docs/07-deployment-and-operations.md`
+- `docs/08-observability-and-sre.md`
+- `docs/09-testing-and-quality.md`
+- `docs/10-risk-assumptions-and-decisions.md`
+- `docs/11-runbooks-and-troubleshooting.md`
+- `docs/12-glossary.md`
+
+Governance und Qualitaet:
+
+- `docs/ultraplan.md`
+- `docs/changelog.md`
+- `docs/quality/*`
+- `docs/adr/*`
+- `docs/templates/*`
 
 ## Scope und Nicht-Scope
 
