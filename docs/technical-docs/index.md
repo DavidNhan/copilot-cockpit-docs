@@ -1,3 +1,7 @@
+
+## Main Documentation
+
+- [Technical Documentation](./technical-documentation.md)
 # Technical Docs
 
 ## Ziel
@@ -31,3 +35,16 @@ Sie beantwortet vor allem:
 - ../quality/iteration-log.md
 - ../quality/traceability-matrix.md
 - ../adr/README.md
+
+## Typische Fragen in diesem Track
+
+- Wie ist die Plattform technisch aufgebaut?
+- Welche Datenvertraege und Integritaetsregeln sind kritisch?
+- Wie werden Releases, Qualitaetsgates und Runbooks umgesetzt?
+
+## Ruecksprung zu User Docs
+
+Fuer nutzerorientierte Einstiege:
+
+- ../user-docs/index.md
+- ../user-docs/getting-started.md

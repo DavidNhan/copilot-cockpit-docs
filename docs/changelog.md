@@ -12,6 +12,10 @@
 
 ### Updated
 
+- Ultraplan from technical-only to dual-track scope (user docs + technical docs)
+- User and technical index pages with explicit handoff and usage intent
+- Quality scorecard and iteration log with Ralph iteration 3 evidence (93.9)
+
 - `README.md` navigation and reading order
 
 ### Notes

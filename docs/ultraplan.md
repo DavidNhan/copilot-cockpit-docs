@@ -1,8 +1,13 @@
-# Ultraplan fuer die technische Dokumentation
+# Ultraplan fuer User Docs und Technical Docs
 
 ## Ziel
 
-Eine belastbare, produktzentrierte technische Dokumentation fuer Copilot Cockpit erstellen und in ralph-artigen Iterationen auf mindestens 90% Qualitaet bringen.
+Eine belastbare Dokumentation fuer Copilot Cockpit erstellen, aufgeteilt in:
+
+- User Docs (Nutzung, Navigation, Workflows)
+- Technical Docs (Architektur, Betrieb, Qualitaet, Governance)
+
+Beide Spuren werden in ralph-artigen Iterationen auf mindestens 90% Qualitaet gebracht.
 
 ## Qualitaetsrubrik
 
@@ -24,6 +29,12 @@ Gewichtung:
 | Nachvollziehbarkeit | 20% |
 | Wartbarkeit | 15% |
 | Testbarkeit/Verifizierbarkeit | 15% |
+
+Zusatzregel fuer Dual-Track-Doku:
+
+1. User Docs und Technical Docs muessen jeweils klar abgegrenzt sein.
+2. Jede Hauptfrage muss einem Track zuordenbar sein.
+3. Die Navigation zwischen beiden Tracks muss explizit dokumentiert sein.
 
 Formel:
 
@@ -51,13 +62,18 @@ Regeln:
 2. Bei Score < 90% zwingend weitere Iteration
 3. Pro Iteration Defizite priorisieren und gezielt beheben
 
+Ralph-Reviewfokus je Track:
+
+1. User Docs: Verstaendlichkeit, Aufgabenorientierung, schnelle Orientierung
+2. Technical Docs: technische Tiefe, Betriebsfaehigkeit, Nachweisbarkeit
+
 ## Phasenplan
 
 ### Phase 0: Scope und Governance
 
 Deliverables:
 
-- Dokumentationszielbild
+- Dokumentationszielbild fuer beide Tracks
 - Kapitelverantwortung
 - Bewertungsrubrik
 
@@ -70,8 +86,8 @@ Exit:
 
 Deliverables:
 
-- Capability- und Perspektivenmodell
-- Komponenten- und Datenflussuebersicht
+- Capability- und Perspektivenmodell (User-Sicht)
+- Komponenten- und Datenflussuebersicht (Technical-Sicht)
 - Liste von Annahmen und Risiken
 
 Exit:
@@ -83,7 +99,7 @@ Exit:
 
 Deliverables:
 
-- README + docs Struktur
+- README + docs Struktur mit klarer Trennung von User Docs und Technical Docs
 - Kapitel mit einheitlicher Struktur
 
 Exit:
@@ -94,8 +110,9 @@ Exit:
 
 Deliverables:
 
-- Architektur, Daten, Setup, Site Map, Testing
-- Quellenhinweise und Betriebsregeln
+- User Docs: Einstieg, Navigation, Workflows, FAQ
+- Technical Docs: Architektur, Daten, Integrationen, Security, Operations, Quality
+- Quellenhinweise und Betriebsregeln fuer beide Tracks
 
 Exit:
 
@@ -133,6 +150,7 @@ Exit:
 | Veraltete Inhalte | Review-Kadenz und Last-Reviewed-Pflicht |
 | Fehlende Nachweise | Quellenpflicht fuer kritische Aussagen |
 | Defekte Querverweise | Cross-Link Tests als Gate |
+| Vermischung der Zielgruppen | Klare Trennung in User Docs und Technical Docs |
 
 ## Validierungsschritte
 
@@ -141,3 +159,4 @@ Exit:
 3. Security-/Governance-Review fuer kritische Aussagen
 4. Rubrikbasierte Endbewertung
 5. Stichprobe Aussage -> Quelle -> Verantwortliche
+6. Track-Check: Jede Seite ist eindeutig User Docs oder Technical Docs zugeordnet

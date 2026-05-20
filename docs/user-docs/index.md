@@ -1,3 +1,7 @@
+
+## Main Documentation
+
+- [User Documentation](./user-documentation.md)
 # User Docs
 
 ## Ziel
@@ -15,6 +19,19 @@ Sie beantwortet vor allem:
 1. getting-started.md
 2. navigation-and-workflows.md
 3. faq.md
+
+## Typische Fragen in diesem Track
+
+- Wie starte ich schnell mit der Seite?
+- Welche Perspektive hilft mir bei welcher Aufgabe?
+- Wie nutze ich Suche und Deep Links effizient?
+
+## Uebergang zu Technical Docs
+
+Wenn die Fragen technisch werden, weiter zu:
+
+- ../technical-docs/index.md
+- ../technical-docs/architecture-at-a-glance.md
 
 ## Fuer wen
 

@@ -1,3 +1,8 @@
+
+## Main Documentation
+
+- [User Documentation](./user-docs/user-documentation.md)
+- [Technical Documentation](./technical-docs/technical-documentation.md)
 # Documentation Index
 
 ## Purpose
@@ -10,6 +15,8 @@ This index separates documentation into user-oriented and technical tracks.
 - user-docs/getting-started.md
 - user-docs/navigation-and-workflows.md
 - user-docs/faq.md
+
+Use this track for onboarding, orientation, and practical usage workflows.
 
 ## Technical Docs
 
@@ -27,6 +34,8 @@ This index separates documentation into user-oriented and technical tracks.
 - 10-risk-assumptions-and-decisions.md
 - 11-runbooks-and-troubleshooting.md
 - 12-glossary.md
+
+Use this track for architecture, data contracts, quality gates, and operations.
 
 ## Governance and Quality Files
 
