@@ -18,6 +18,20 @@ This chapter defines deployment flow, operational checks, and release readiness.
 4. Review and approve
 5. Deploy and verify smoke checks
 
+## Mermaid: Release Flow
+
+```mermaid
+flowchart LR
+	Scope[Scope and Impact]
+	Auto[Automated Tests]
+	Manual[Manual Checks]
+	Review[Review and Approval]
+	Deploy[Deploy]
+	Smoke[Smoke Verification]
+
+	Scope --> Auto --> Manual --> Review --> Deploy --> Smoke
+```
+
 ## Operational Readiness Checklist
 
 - All required tests pass
@@ -31,6 +45,24 @@ This chapter defines deployment flow, operational checks, and release readiness.
 2. Roll back quickly for critical navigation/data regressions
 3. Open incident note and attach root-cause hypothesis
 4. Add regression test for reproduced failure
+
+## Mermaid: Incident and Rollback Path
+
+```mermaid
+flowchart TD
+	Detect[Detect Regression]
+	Decide{Critical Impact?}
+	Rollback[Rollback to Last Good]
+	Analyze[Root Cause Analysis]
+	Fix[Implement Fix]
+	Test[Add Regression Test]
+	Redeploy[Redeploy]
+
+	Detect --> Decide
+	Decide -- Yes --> Rollback --> Analyze
+	Decide -- No --> Analyze
+	Analyze --> Fix --> Test --> Redeploy
+```
 
 ## Operational Ownership
 

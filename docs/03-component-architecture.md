@@ -26,6 +26,27 @@ This chapter describes the major runtime and governance components.
 - Test runner and browser automation
 - Optional enrichment tooling for model-data maintenance
 
+## Mermaid: Component Interaction
+
+```mermaid
+flowchart TB
+	Frontend[Multi-Page Frontend]
+	Cockpit[Cockpit Renderer]
+	Search[Global Search Module]
+	Data[Data Catalogs]
+	Tests[Test Layer]
+	Hosting[Static Hosting]
+	Enrich[Optional Enrichment Tooling]
+
+	Hosting --> Frontend
+	Frontend --> Cockpit
+	Frontend --> Search
+	Cockpit --> Data
+	Search --> Data
+	Tests --> Frontend
+	Enrich --> Data
+```
+
 ## Component Responsibilities
 
 | Component | Responsibility | Failure Mode |

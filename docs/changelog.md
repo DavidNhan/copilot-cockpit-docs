@@ -7,6 +7,7 @@
 - Full chapter structure `01` to `12`
 - ADR and template scaffolding
 - Quality governance folder with rubric, scorecard, iteration log, traceability matrix
+- Mermaid visualizations in architecture, component, data-flow, and operations chapters
 
 ### Updated
 

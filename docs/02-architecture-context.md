@@ -8,6 +8,24 @@ This chapter defines system boundaries and external context for Copilot Cockpit.
 
 Copilot Cockpit is delivered as a static website. Business value comes from curated and structured feature knowledge, not from backend transactions.
 
+## Mermaid: System Context
+
+```mermaid
+flowchart LR
+	User[User Browser]
+	Site[Copilot Cockpit Static Site]
+	Data[JSON Data Catalogs]
+	Host[Static Hosting Platform]
+	GH[GitHub Copilot Platform]
+	Ent[Enterprise Systems]
+
+	User --> Site
+	Site --> Data
+	Host --> Site
+	Site -. references .-> GH
+	Site -. governance/security context .-> Ent
+```
+
 ## Boundary Definition
 
 Inside boundary:
