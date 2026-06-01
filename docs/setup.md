@@ -1,4 +1,4 @@
-# Setup und Betrieb
+# Workbench Setup und Betrieb
 
 Diese Anleitung beschreibt das Quell-Repo `C:\Users\danh\copilot-cockpit`.
 

@@ -1,6 +1,6 @@
-# Projektdokumentation zu Copilot Cockpit
+# Projektdokumentation zu Workbench
 
-Diese Dokumentation beschreibt das Quell-Repo `C:\Users\danh\copilot-cockpit` auf Basis der tatsaechlichen Dateien, Seiten, Datenkataloge und Tests. Das Projekt selbst ist eine statische, datengetriebene Referenzsite zu GitHub Copilot mit durchgaengiger Luftfahrt-Metapher.
+Diese Dokumentation beschreibt die Workbench fuer technische Dokumentation auf Basis von Repositories und Zielumgebungen. Als Referenzobjekt wird das Quell-Repo `C:\Users\danh\copilot-cockpit` genutzt.
 
 Alle Pfade in dieser Doku beziehen sich auf die Wurzel des Quell-Repos.
 
@@ -8,7 +8,7 @@ Alle Pfade in dieser Doku beziehen sich auf die Wurzel des Quell-Repos.
 
 | Bereich | Stand |
 | --- | --- |
-| Anwendungstyp | Statische Multi-Page-Webseite ohne Build-Step |
+| Anwendungstyp | Workbench fuer standardisierte Repo- und Umgebungsdokumentation |
 | Zentrale Einstiegspunkte | `index.html`, `terminal.html`, `security.html`, `jet-bridge.html`, `ramp.html`, `runway.html`, `tower.html`, `flight-log.html`, `preflight.html`, `wiring.html` |
 | Gemeinsame Laufzeitdateien | `app.js`, `search.js`, `styles.css` |
 | Inhaltliche Datenbasis | JSON-Dateien unter `data\` |
@@ -23,6 +23,27 @@ Alle Pfade in dieser Doku beziehen sich auf die Wurzel des Quell-Repos.
 - `docs/data-sources.md` - JSON-Kataloge, Verbraucher und Pflegepfade
 - `docs/testing.md` - Testaufbau, Spec-Dateien und Testfokus
 - `docs/site-map.md` - Zweck jeder HTML-Seite inklusive Daten- und Testbezug
+- `docs/workbench.md` - Verpflichtender Workbench-Prozess fuer jede neue Dokumentation
+- `docs/ultraplan.md` - Ralph-Iterationsplan mit 90%-Qualitaetsziel und Mermaid-Visualisierung
+
+## Verbindliche Arbeitsregel
+
+Bei jeder neuen Anfrage zur Erstellung von Dokumentation muessen immer beide Artefakte verwendet werden:
+
+1. `docs/workbench.md`
+2. `docs/ultraplan.md`
+
+Eine Auslieferung gilt erst als abgeschlossen, wenn der Ralph-Zyklus ein Ergebnis von mindestens 90% in der Scorecard erreicht.
+
+## Format- und Freigabestandard
+
+Die Workbench erzeugt Dokumentation im festen Format nach Best Practices und den beiden Referenzvorlagen:
+
+1. `SoftwareRequirements.doc`
+2. `System_Requirements_Template.docx`
+
+Der resultierende Standard kombiniert klassische SRS-Kapitel mit Anforderungen an Umgebung, Betrieb, Akzeptanz und Revisionsfuehrung.
+Technische Dokumentation muss dabei immer Mermaid als visuelle Darstellung einsetzen und mindestens ein Kontext- sowie ein Ablauf-/Datenflussdiagramm enthalten.
 
 ## Relevante Quellstrukturen
 

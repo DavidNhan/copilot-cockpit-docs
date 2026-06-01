@@ -1,4 +1,4 @@
-# Datenquellen
+# Workbench Datenquellen
 
 Das Quell-Repo ist stark datengetrieben. Fast alle Inhalte werden aus JSON-Dateien unter `data\` gerendert. Diese Seite beschreibt sowohl die Laufzeitdaten als auch den Pflegepfad fuer den Modellkatalog.
 

@@ -1,4 +1,4 @@
-# Seitenlandkarte
+# Workbench Seitenlandkarte
 
 Diese Uebersicht beschreibt jede HTML-Seite des Quell-Repos `C:\Users\danh\copilot-cockpit`, ihren fachlichen Zweck, ihre Datenquellen und die zugehoerige Testabdeckung.
 

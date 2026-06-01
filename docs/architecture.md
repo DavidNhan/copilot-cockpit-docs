@@ -1,10 +1,10 @@
-# Architekturueberblick
+# Workbench Architekturueberblick
 
 Diese Beschreibung bezieht sich auf das Quell-Repo `C:\Users\danh\copilot-cockpit`.
 
 ## 1. Systembild
 
-Copilot Cockpit ist eine statische Multi-Page-Anwendung ohne Build-Step. Die HTML-Dateien im Repo-Root sind direkt deploybare Seiten. Die Logik ist vollstaendig clientseitig:
+Die Workbench nutzt hier ein statisches Multi-Page-Referenzsystem ohne Build-Step. Die HTML-Dateien im Repo-Root sind direkt deploybare Seiten. Die Logik ist vollstaendig clientseitig:
 
 1. HTML liefert Struktur und Platzhalter.
 2. JavaScript laedt JSON-Dateien aus `data\`.

@@ -1,4 +1,4 @@
-# Teststrategie und Testabdeckung
+# Workbench Teststrategie und Testabdeckung
 
 Das Quell-Repo nutzt Playwright als einzigen automatisierten Teststack. Die Tests pruefen sowohl Browserverhalten als auch Datenintegritaet der JSON-Kataloge.
 
