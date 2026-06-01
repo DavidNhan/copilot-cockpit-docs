@@ -117,3 +117,29 @@ Verify:
 
 - Score: 94.3
 - Ergebnis: bestanden (>= 90) fuer den konkreten Output-Auftrag
+
+## Iteration 6 (Output Branch Seitenauftrag)
+
+Plan:
+
+- Eine eigene Workbench-Dokumentation fuer `https://copilot-cockpit.com/` als oeffentliche Startseite erzeugen
+- Aussagen nur auf sichtbare Live-Seitenartefakte und direkt geladene Skripte/Daten stuetzen
+- Mermaid-Kontext und Mermaid-Datenfluss verpflichtend integrieren
+
+Review Findings:
+
+1. Die bestehende Output-Dokumentation war repo-orientiert, nicht seitenfokussiert
+2. Die Live-Seite enthielt mehr sichtbare UI- und Integrationsdetails als bisher dokumentiert
+3. Fuer den konkreten Seitenauftrag fehlte ein eigener Ralph-Nachweis
+
+Fixes:
+
+1. `docs/output/copilot-cockpit-site-dokumentation.md` im kompletten Workbench-Format angelegt
+2. Sichtbare Funktionen der Homepage, globale Suche, externe Integrationen und Betriebsannahmen explizit beschrieben
+3. Zwei Mermaid-Diagramme fuer Systemkontext und Laufzeitfluss eingebaut
+4. Scorecard um Iteration 6 fuer den Seitenauftrag erweitert
+
+Verify:
+
+- Score: 94.7
+- Ergebnis: bestanden (>= 90) fuer den konkreten Seitenauftrag

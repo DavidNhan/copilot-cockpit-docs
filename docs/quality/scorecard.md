@@ -64,3 +64,16 @@ Status: Ziel >= 90 klar erreicht
 | Total |  | 100 | 94.3 |
 
 Status: Ziel >= 90 fuer den konkreten Output-Auftrag erreicht
+
+## Iteration 6 (Output Branch Auftrag: Copilot Cockpit Site-Dokumentation)
+
+| Kriterium | Punkte | Gewicht | Gewichtet |
+| --- | ---: | ---: | ---: |
+| Vollstaendigkeit | 4.8 | 25 | 24.0 |
+| Korrektheit | 4.8 | 25 | 24.0 |
+| Nachvollziehbarkeit | 4.7 | 20 | 18.8 |
+| Wartbarkeit | 4.6 | 15 | 13.8 |
+| Verifizierbarkeit | 4.7 | 15 | 14.1 |
+| Total |  | 100 | 94.7 |
+
+Status: Ziel >= 90 fuer den konkreten Seitenauftrag erreicht
