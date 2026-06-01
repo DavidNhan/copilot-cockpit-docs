@@ -25,6 +25,7 @@ Alle Pfade in dieser Doku beziehen sich auf die Wurzel des Quell-Repos.
 - `docs/site-map.md` - Zweck jeder HTML-Seite inklusive Daten- und Testbezug
 - `docs/workbench.md` - Verpflichtender Workbench-Prozess fuer jede neue Dokumentation
 - `docs/ultraplan.md` - Ralph-Iterationsplan mit 90%-Qualitaetsziel und Mermaid-Visualisierung
+- `docs/output/copilot-cockpit-repo-dokumentation.md` - Ergebnisdokumentation fuer copilot-cockpit.com und das Basis-Repository
 
 ## Verbindliche Arbeitsregel
 

@@ -51,3 +51,16 @@ Status: Ziel >= 90 erreicht
 | Total |  | 100 | 95.9 |
 
 Status: Ziel >= 90 klar erreicht
+
+## Iteration 5 (Output Branch Auftrag: Copilot Cockpit Repo-Dokumentation)
+
+| Kriterium | Punkte | Gewicht | Gewichtet |
+| --- | ---: | ---: | ---: |
+| Vollstaendigkeit | 4.8 | 25 | 24.0 |
+| Korrektheit | 4.7 | 25 | 23.5 |
+| Nachvollziehbarkeit | 4.8 | 20 | 19.2 |
+| Wartbarkeit | 4.6 | 15 | 13.8 |
+| Verifizierbarkeit | 4.6 | 15 | 13.8 |
+| Total |  | 100 | 94.3 |
+
+Status: Ziel >= 90 fuer den konkreten Output-Auftrag erreicht

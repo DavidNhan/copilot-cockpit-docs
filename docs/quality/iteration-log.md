@@ -91,3 +91,29 @@ Verify:
 
 - Score: 95.9
 - Ergebnis: bestanden und fuer Wiederverwendung geschaerft
+
+## Iteration 5 (Output Branch Auftrag)
+
+Plan:
+
+- Neue technische Dokumentation fuer `https://copilot-cockpit.com/` und das Basis-Repository `https://github.com/TheTrustedAdvisor/copilot-cockpit` in `docs/output/` erzeugen
+- Workbench- und Ultraplan-Regeln explizit im Ergebnis nachweisen
+- Mermaid-Kontext und Mermaid-Ablauf verpflichtend integrieren
+
+Review Findings:
+
+1. Es fehlte ein dediziertes Auftragsdokument im Output-Ordner
+2. Der Output-Auftrag war noch nicht als eigener Ralph-Nachweis in der Scorecard erfasst
+3. Rueckverfolgbarkeit musste direkt im neuen Dokument sichtbar werden
+
+Fixes:
+
+1. `docs/output/copilot-cockpit-repo-dokumentation.md` in voller Workbench-Struktur erstellt
+2. Zwei Mermaid-Diagramme (Kontext + Sequenzfluss) integriert
+3. Traceability-Tabelle und Workbench-/Ultraplan-Nachweis eingebaut
+4. Scorecard um Iteration 5 fuer den konkreten Auftrag erweitert
+
+Verify:
+
+- Score: 94.3
+- Ergebnis: bestanden (>= 90) fuer den konkreten Output-Auftrag
